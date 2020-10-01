@@ -8,7 +8,15 @@ import 'package:flutter_not_sepeti/models/notlar.dart';
 import 'package:flutter_not_sepeti/not_detay.dart';
 import 'package:flutter_not_sepeti/utils/database_helper.dart';
 
-void main() => runApp(MyApp());
+import 'utils/background.dart';
+
+import 'package:background_fetch/background_fetch.dart';
+
+void main() {
+  runApp(MyApp());
+  //runApp(MyBackGround());
+  //BackgroundFetch.registerHeadlessTask(backgroundFetchHeadlessTask);
+}
 
 class MyApp extends StatelessWidget {
   @override
@@ -101,14 +109,14 @@ class _NotListesiState extends State<NotListesi> {
   void kategoriEkleDialog(BuildContext context) {
     var formKey = GlobalKey<FormState>();
     String yeniKategoriAdi;
-
+    String label="Kategori Ekle";
     showDialog(
         barrierDismissible: false,
         context: context,
         builder: (context) {
           return SimpleDialog(
             title: Text(
-              "Kategori Ekle",
+              label,
               style: TextStyle(
                   fontFamily: "Raleway",
                   fontWeight: FontWeight.w700,
@@ -156,6 +164,10 @@ class _NotListesiState extends State<NotListesi> {
                     borderSide:
                     BorderSide(color: Theme.of(context).accentColor),
                     onPressed: () {
+//                      label="test";
+//                      setState(() {
+//
+//                      });
                       if (formKey.currentState.validate()) {
                         formKey.currentState.save();
                         databaseHelper

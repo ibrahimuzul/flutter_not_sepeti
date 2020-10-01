@@ -11,6 +11,8 @@ class _KategorilerState extends State<Kategoriler> {
   List<Kategori> tumKategoriler;
   DatabaseHelper databaseHelper;
 
+
+
   @override
   void initState() {
     // TODO: implement initState

@@ -71,40 +71,46 @@ class _NotDetayState extends State<NotDetay> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 8),
-                          child: Text(
-                            "Kategori :",
-                            style: etiket,
-                          ),
-                        ),
-                        Container(
-                          padding:
+
+                        Row(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.symmetric(horizontal: 8),
+                              child: Text(
+                                "Kategori :",
+                                style: etiket,
+                              ),
+                            ),
+                            Container(
+                              padding:
                               EdgeInsets.symmetric(vertical: 1, horizontal: 12),
-                          margin: EdgeInsets.all(8),
-                          decoration: BoxDecoration(
-                              border: Border.all(
-                                  color: Theme.of(context).primaryColor,
-                                  width: 1),
-                              borderRadius:
+                              margin: EdgeInsets.all(8),
+                              decoration: BoxDecoration(
+                                  border: Border.all(
+                                      color: Theme.of(context).primaryColor,
+                                      width: 1),
+                                  borderRadius:
                                   BorderRadius.all(Radius.circular(10))),
-                          child: DropdownButtonHideUnderline(
-                              child: DropdownButton<Kategori>(
-                                  items: kategoriItemleriOlustur(),
-                                  hint: Text("Kategori Seç"),
-                                  value: secilenKategori,
-                                  onChanged:
-                                      (Kategori kullanicininSectigiKategori) {
-                                    debugPrint("Seçilen kategori:" +
-                                        kullanicininSectigiKategori.toString());
-                                    setState(() {
-                                      secilenKategori =
-                                          kullanicininSectigiKategori;
-                                      kategoriID = kullanicininSectigiKategori
-                                          .kategoriID;
-                                    });
-                                  })),
+                              child: DropdownButtonHideUnderline(
+                                  child: DropdownButton<Kategori>(
+                                      items: kategoriItemleriOlustur(),
+                                      hint: Text("Kategori Seç"),
+                                      value: secilenKategori,
+                                      onChanged:
+                                          (Kategori kullanicininSectigiKategori) {
+                                        debugPrint("Seçilen kategori:" +
+                                            kullanicininSectigiKategori.toString());
+                                        setState(() {
+                                          secilenKategori =
+                                              kullanicininSectigiKategori;
+                                          kategoriID = kullanicininSectigiKategori
+                                              .kategoriID;
+                                        });
+                                      })),
+                            ),
+                          ],
                         ),
+
                         OutlineButton(
                             borderSide: BorderSide(
                                 color: Theme.of(context).accentColor),
