@@ -104,6 +104,54 @@ class _NotDetayState extends State<NotDetay> {
                               });
                             })),
                   ),
+                  OutlineButton(
+                      borderSide: BorderSide(
+                          color: Theme.of(context).accentColor),
+                      onPressed: () {
+                        if (formKey.currentState.validate()) {
+                          formKey.currentState.save();
+
+                          var suan = DateTime.now();
+                          if (widget.duzenlenecekNot == null) {
+                            databaseHelper
+                                .notEkle(Not(
+                                kategoriID,
+                                notBaslik,
+                                notIcerik,
+                                suan.toString(),
+                                secilenOncelik))
+                                .then((kaydedilenNotID) {
+                              if (kaydedilenNotID != 0) {
+//                                setState(() {
+//
+//                                });
+                                Navigator.pop(context);
+                              }
+                            });
+                          } else {
+                            databaseHelper
+                                .notGuncelle(Not.withID(
+                                widget.duzenlenecekNot.notID,
+                                kategoriID,
+                                notBaslik,
+                                notIcerik,
+                                suan.toString(),
+                                secilenOncelik))
+                                .then((guncellenenID) {
+                              if (guncellenenID != 0) {
+                                Navigator.pop(context);
+                              }
+                            });
+                          }
+                        }
+                      },
+                      child: Text(
+                        "KAYDET",
+                        style: TextStyle(
+                            color: Theme.of(context).accentColor,
+                            fontSize: 20,
+                            fontWeight: FontWeight.w700),
+                      )),
                 ],
               ),
               Padding(
@@ -200,54 +248,7 @@ class _NotDetayState extends State<NotDetay> {
                             fontSize: 20,
                             fontWeight: FontWeight.w700),
                       )),
-                  OutlineButton(
-                      borderSide: BorderSide(
-                          color: Theme.of(context).accentColor),
-                      onPressed: () {
-                        if (formKey.currentState.validate()) {
-                          formKey.currentState.save();
 
-                          var suan = DateTime.now();
-                          if (widget.duzenlenecekNot == null) {
-                            databaseHelper
-                                .notEkle(Not(
-                                kategoriID,
-                                notBaslik,
-                                notIcerik,
-                                suan.toString(),
-                                secilenOncelik))
-                                .then((kaydedilenNotID) {
-                              if (kaydedilenNotID != 0) {
-//                                setState(() {
-//
-//                                });
-                                Navigator.pop(context);
-                              }
-                            });
-                          } else {
-                            databaseHelper
-                                .notGuncelle(Not.withID(
-                                widget.duzenlenecekNot.notID,
-                                kategoriID,
-                                notBaslik,
-                                notIcerik,
-                                suan.toString(),
-                                secilenOncelik))
-                                .then((guncellenenID) {
-                              if (guncellenenID != 0) {
-                                Navigator.pop(context);
-                              }
-                            });
-                          }
-                        }
-                      },
-                      child: Text(
-                        "KAYDET",
-                        style: TextStyle(
-                            color: Theme.of(context).accentColor,
-                            fontSize: 20,
-                            fontWeight: FontWeight.w700),
-                      )),
                 ],
               ),
             ],
