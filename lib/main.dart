@@ -25,12 +25,19 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class NotListesi extends StatelessWidget {
+class NotListesi extends StatefulWidget {
+  @override
+  _NotListesiState createState() => _NotListesiState();
+}
+
+class _NotListesiState extends State<NotListesi> {
   DatabaseHelper databaseHelper = DatabaseHelper();
+
   var _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
+    debugPrint("Build 1");
     return Scaffold(
       key: _scaffoldKey,
       appBar: AppBar(
@@ -76,7 +83,10 @@ class NotListesi extends StatelessWidget {
           FloatingActionButton(
             tooltip: "Not Ekle",
             heroTag: "NotEkle",
-            onPressed: () => _detaySayfasinaGit(context),
+            onPressed: () {
+              _detaySayfasinaGit(context);
+
+            },
             child: Icon(
               Icons.add,
               color: Colors.white,
@@ -185,7 +195,11 @@ class NotListesi extends StatelessWidget {
         MaterialPageRoute(
             builder: (context) => NotDetay(
               baslik: "Yeni Not",
-            )));
+            ))).then((value) {
+      setState(() {
+
+      });
+    });
   }
 
   void _kategorilerSayfasinaGit(BuildContext context) {
@@ -214,7 +228,7 @@ class _NotlarState extends State<Notlar> {
   Widget build(BuildContext context) {
     TextStyle textStyleBaslik = Theme.of(context).textTheme.body1.copyWith(
         fontSize: 16, fontWeight: FontWeight.w700, fontFamily: 'Raleway');
-
+debugPrint("Build 2");
     return FutureBuilder(
       future: databaseHelper.notListesiniGetir(),
       builder: (context, AsyncSnapshot<List<Not>> snapShot) {

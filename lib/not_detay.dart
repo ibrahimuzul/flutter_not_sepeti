@@ -218,6 +218,9 @@ class _NotDetayState extends State<NotDetay> {
                                 secilenOncelik))
                                 .then((kaydedilenNotID) {
                               if (kaydedilenNotID != 0) {
+//                                setState(() {
+//
+//                                });
                                 Navigator.pop(context);
                               }
                             });
