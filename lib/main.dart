@@ -391,10 +391,10 @@ debugPrint("Build 2");
             child: Text(
               "AZ",
               style: TextStyle(
-                  color: Colors.deepOrange.shade200,
+                  color: Colors.blue,
                   fontWeight: FontWeight.bold),
             ),
-            backgroundColor: Colors.blueGrey.shade200);
+            backgroundColor: Colors.blueGrey.shade100);
         break;
       case 1:
         return CircleAvatar(
@@ -402,20 +402,20 @@ debugPrint("Build 2");
             child: Text(
               "ORTA",
               style: TextStyle(
-                  color: Colors.deepOrange.shade400,
+                  color: Colors.red.shade400,
                   fontWeight: FontWeight.bold),
             ),
-            backgroundColor: Colors.blueGrey.shade200);
+            backgroundColor: Colors.blueGrey.shade100);
       case 2:
         return CircleAvatar(
             radius: 26,
             child: Text(
               "ACIL",
               style: TextStyle(
-                  color: Colors.deepOrange.shade700,
+                  color: Colors.red.shade700,
                   fontWeight: FontWeight.bold),
             ),
-            backgroundColor: Colors.blueGrey.shade200);
+            backgroundColor: Colors.blueGrey.shade100);
         break;
     }
   }
