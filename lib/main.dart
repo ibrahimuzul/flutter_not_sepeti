@@ -374,7 +374,13 @@ debugPrint("Build 2");
             builder: (context) => NotDetay(
               baslik: "Notu Düzenle",
               duzenlenecekNot: not,
-            )));
+            ))).then((value){
+              setState(() {
+
+              });
+            });
+
+
   }
 
   _oncelikIconuAta(int notOncelik) {
